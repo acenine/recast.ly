@@ -1,10 +1,12 @@
 var VideoList = (props) => (
   <div className="video-list">
     <div>
-      {props.videos.map((video, i) => <VideoListEntry video = {video} clickFn = {this.props.clickFn} index = {i}/> )}
+      {props.videos.map((video, i) => <VideoListEntry video = {video} clickFn = {props.clickFn} index = {i}/> )}
     </div>
   </div>
 );
+
+// VideoList extends React.Component
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated

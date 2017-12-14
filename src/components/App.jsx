@@ -10,7 +10,10 @@ class App extends React.Component {
 // make a function in app and pass it to video list then to video list entry, then it will be called at the lowest level. it will return the key
 
   onVideoListEntryClick(videoId) {
-    console.log(videoId);
+    this.setState({
+      currentVideo: window.exampleVideoData[videoId]
+    });
+
     // this.setState({
     //   currentVideo: window.exampleVideoData[videoId]//the properties object of the video we just clicked;
     // })
@@ -31,7 +34,7 @@ class App extends React.Component {
             <div><VideoPlayer video = {this.state.currentVideo} /></div>
           </div>
           <div className="col-md-5">
-            <div><VideoList videos = {this.state.videos} clickFn = {this.onVideoListEntryClick.bind(this)} key = 0 /></div>
+            <div><VideoList videos = {this.state.videos} clickFn = {this.onVideoListEntryClick.bind(this)} /></div>
           </div>
         </div>
       </div>
