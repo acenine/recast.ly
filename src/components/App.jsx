@@ -7,12 +7,14 @@ class App extends React.Component {
       currentVideo: window.exampleVideoData[0]
     };
   }
+// make a function in app and pass it to video list then to video list entry, then it will be called at the lowest level. it will return the key
 
-  // onVideoListEntryClick() {
-  //   this.setState({
-
-  //   })
-  // }
+  onVideoListEntryClick(videoId) {
+    console.log(videoId);
+    // this.setState({
+    //   currentVideo: window.exampleVideoData[videoId]//the properties object of the video we just clicked;
+    // })
+  }
 
   render() {
 
@@ -26,10 +28,10 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><VideoPlayer video = {this.state.currentVideo}/></div>
+            <div><VideoPlayer video = {this.state.currentVideo} /></div>
           </div>
           <div className="col-md-5">
-            <div><VideoList videos = {this.state.videos}/></div>
+            <div><VideoList videos = {this.state.videos} clickFn = {this.onVideoListEntryClick.bind(this)} key = 0 /></div>
           </div>
         </div>
       </div>

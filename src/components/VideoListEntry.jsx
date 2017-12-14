@@ -3,6 +3,7 @@ class VideoListEntry extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
 
@@ -12,7 +13,7 @@ class VideoListEntry extends React.Component {
         </div>
         <div className="media-body">
           <div className="video-list-entry-title">{this.props.video.snippet.title}</div>
-          <div className="video-list-entry-detail">{this.props.video.snippet.description}</div>
+          <div className="video-list-entry-detail" onClick = {this.props.clickFn.bind(this)} key = {this.props.index}>{this.props.video.snippet.description}</div>
         </div>
       </div>
     );
