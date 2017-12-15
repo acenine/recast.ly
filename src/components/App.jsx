@@ -3,30 +3,44 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: window.exampleVideoData,
-      currentVideo: window.exampleVideoData[0]
+      videos: window.exampleVideoData, // return an array of 5 video objects
+      currentVideo: window.exampleVideoData[0],
+      currentQuery: 'dog'
     };
   }
 // make a function in app and pass it to video list then to video list entry, then it will be called at the lowest level. it will return the key
+  componentDidMount() {
+    { console.log('App did mount'); }
+    this.props.searchFn({key: window.YOUTUBE_API_KEY, max: 5, query: this.state.currentQuery}, this.getVids.bind(this));
+  }
 
   onVideoListEntryClick(videoId) {
     this.setState({
-      currentVideo: window.exampleVideoData[videoId]
+      currentVideo: this.state.videos[videoId]
     });
+  }
 
-    // this.setState({
-    //   currentVideo: window.exampleVideoData[videoId]//the properties object of the video we just clicked;
-    // })
+  getVids(info) {
+    this.setState({
+      videos: info,
+      currentVideo: info[0]
+    });
+  }
+
+  getQueryFromSearch(query) {
+    { console.log(query); }
+    this.setState({
+      currentQuery: query,
+    });
+    this.componentDidMount();
   }
 
   render() {
-
     return (
-
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><Search/></div>
+            <div><Search queryFn = {this.getQueryFromSearch.bind(this)}/></div>
           </div>
         </nav>
         <div className="row">
