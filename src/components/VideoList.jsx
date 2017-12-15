@@ -2,6 +2,7 @@ var VideoList = (props) => (
   <div className="video-list">
     <div>
       {props.videos.map((video, i) => <VideoListEntry video = {video} clickFn = {props.clickFn} index = {i}/> )}
+    }
     </div>
   </div>
 );

@@ -10,8 +10,7 @@ class App extends React.Component {
   }
 // make a function in app and pass it to video list then to video list entry, then it will be called at the lowest level. it will return the key
   componentDidMount() {
-    { console.log('App did mount'); }
-    this.props.searchFn({key: window.YOUTUBE_API_KEY, max: 5, query: this.state.currentQuery}, this.getVids.bind(this));
+    window.searchYouTube({key: window.YOUTUBE_API_KEY, max: 5, query: this.state.currentQuery}, this.getVids.bind(this));
   }
 
   onVideoListEntryClick(videoId) {
@@ -28,7 +27,6 @@ class App extends React.Component {
   }
 
   getQueryFromSearch(query) {
-    { console.log(query); }
     this.setState({
       currentQuery: query,
     });
