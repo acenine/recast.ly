@@ -2,34 +2,16 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.debounceTimeout = null;
-    this.state = {
-      text: $('.form-control').val(),
-    };
-
   }
-
 
   returnVal() {
-    this.setState({
-      text: $('.form-control').val()
-    });
-    this.props.queryFn(this.state.text);
+    this.props.queryFn($('.form-control').val());
   }
-
-  // debounce() {
-  //   this.returnVal.on('change keyPress', function(event) {
-  //     clearTimeout(debounceTimeout);
-  //     debounceTimeout = setTimeout(returnVal, 500);
-  //   })
-  // }
-
-
 
   render() {
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text" onKeyPress = {this.returnVal.bind(this)}/>
+        <input className="form-control" type="text" onInput = {this.returnVal.bind(this)}/>
         <button className="btn hidden-sm-down">
           <span className="glyphicon glyphicon-search"></span>
         </button>
